@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import './categories_screen.dart';
+import '../screens/tabs_screen.dart';
+import '../screens/category_meals_screen.dart';
+import '../screens/categories_screen.dart';
+import '../screens/meal_detail_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -26,26 +29,43 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.bold),
         ),
       ),
-      home: CategoriesScreen(),
+      // home: CategoriesScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (ctx) => TabsScreen(),
+        CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
+        MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
+      },
+      // onGenerateRoute: (settings) {
+      //   print(settings.arguments);
+      //   return MaterialPageRoute(
+      //     builder: (ctx) => CategoriesScreen(),
+      //   );
+      // },
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(
+          builder: (ctx) => CategoriesScreen(),
+        );
+      },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
+// class MyHomePage extends StatefulWidget {
+//   @override
+//   _MyHomePageState createState() => _MyHomePageState();
+// }
 
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('DeliMeals'),
-      ),
-      body: Center(
-        child: Text('Navigation Time!'),
-      ),
-    );
-  }
-}
+// class _MyHomePageState extends State<MyHomePage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('DeliMeals'),
+//       ),
+//       body: Center(
+//         child: Text('Navigation Time!'),
+//       ),
+//     );
+//   }
+// }
